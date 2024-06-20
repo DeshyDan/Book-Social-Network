@@ -1,6 +1,5 @@
-package com.tutorial.bookSocialNetwork.role.user;
+package com.tutorial.bookSocialNetwork.user;
 
-import com.tutorial.bookSocialNetwork.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

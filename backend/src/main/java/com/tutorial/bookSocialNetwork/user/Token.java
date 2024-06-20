@@ -1,10 +1,8 @@
-package com.tutorial.bookSocialNetwork.role.user.user;
+package com.tutorial.bookSocialNetwork.user;
 
-import com.tutorial.bookSocialNetwork.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
