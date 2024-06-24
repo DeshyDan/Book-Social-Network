@@ -34,6 +34,7 @@ public class User implements UserDetails, Principal {
     private LocalDate dateOfBirth;
     @Column(unique = true)
     private String email;
+    private String password;
     private boolean accountLocked;
     private boolean enabled;
 
@@ -89,7 +90,7 @@ public class User implements UserDetails, Principal {
         return enabled;
     }
 
-    private String fullName() {
+    public String getFullName() {
         return firstName + " " + lastName;
     }
 
