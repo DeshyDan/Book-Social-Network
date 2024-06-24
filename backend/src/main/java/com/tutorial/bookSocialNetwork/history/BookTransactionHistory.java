@@ -1,8 +1,11 @@
-package com.tutorial.bookSocialNetwork.feedback;
+package com.tutorial.bookSocialNetwork.history;
 
 import com.tutorial.bookSocialNetwork.book.Book;
 import com.tutorial.bookSocialNetwork.common.BaseEntity;
-import jakarta.persistence.*;
+import com.tutorial.bookSocialNetwork.user.User;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,14 +18,17 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Feedback extends BaseEntity {
+public class BookTransactionHistory extends BaseEntity {
 
-    private Double note;
-    private String comment;
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
 
+
+    private boolean returned;
+    private boolean returnApproved;
 
 }
