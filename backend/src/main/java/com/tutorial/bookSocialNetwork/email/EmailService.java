@@ -2,7 +2,6 @@ package com.tutorial.bookSocialNetwork.email;
 
 
 import jakarta.mail.MessagingException;
-import jakarta.mail.Multipart;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,11 +11,10 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.nio.charset.StandardCharsets.*;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.springframework.mail.javamail.MimeMessageHelper.MULTIPART_MODE_MIXED;
 
 @Service
@@ -38,7 +36,7 @@ public class EmailService {
         if (emailTemplate == null) {
             templateName = "confirm-email";
         } else {
-            templateName = emailTemplate.name();
+            templateName = emailTemplate.getName();
         }
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();

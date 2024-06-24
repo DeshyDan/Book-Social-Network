@@ -16,6 +16,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static jakarta.persistence.FetchType.EAGER;
+
 @Getter
 @Setter
 @Builder
@@ -38,7 +40,7 @@ public class User implements UserDetails, Principal {
     private boolean accountLocked;
     private boolean enabled;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = EAGER)
     private List<Role> roles;
 
     @CreatedDate

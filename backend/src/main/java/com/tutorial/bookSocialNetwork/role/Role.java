@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "_user")
+@Table(name = "role")
 @EntityListeners(AuditingEntityListener.class)
 public class Role {
 
@@ -27,9 +27,9 @@ public class Role {
     @Column(unique = true)
     private String name;
 
-    @ManyToMany(mappedBy ="roles" )
+    @ManyToMany(mappedBy ="roles")
     @JsonIgnore
-    private List<User> users;
+    private List<User> user;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
