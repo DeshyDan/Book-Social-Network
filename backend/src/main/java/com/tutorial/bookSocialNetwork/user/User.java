@@ -64,7 +64,7 @@ public class User implements UserDetails, Principal {
 
     @Override
     public String getPassword() {
-        return "";
+        return password;
     }
 
     @Override
