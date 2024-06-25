@@ -9,7 +9,6 @@ import com.tutorial.bookSocialNetwork.user.TokenRepository;
 import com.tutorial.bookSocialNetwork.user.User;
 import com.tutorial.bookSocialNetwork.user.UserRepository;
 import jakarta.mail.MessagingException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -5,7 +5,10 @@ import com.tutorial.bookSocialNetwork.feedback.Feedback;
 import com.tutorial.bookSocialNetwork.history.BookTransactionHistory;
 import com.tutorial.bookSocialNetwork.user.User;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;

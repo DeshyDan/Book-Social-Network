@@ -1,7 +1,6 @@
 package com.tutorial.bookSocialNetwork.exception;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 import static org.springframework.http.HttpStatus.*;

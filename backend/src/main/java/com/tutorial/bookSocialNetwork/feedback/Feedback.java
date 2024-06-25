@@ -2,7 +2,9 @@ package com.tutorial.bookSocialNetwork.feedback;
 
 import com.tutorial.bookSocialNetwork.book.Book;
 import com.tutorial.bookSocialNetwork.common.BaseEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

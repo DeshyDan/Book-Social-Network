@@ -2,7 +2,6 @@ package com.tutorial.bookSocialNetwork.security;
 
 import com.tutorial.bookSocialNetwork.user.UserRepository;
 import jakarta.transaction.Transactional;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

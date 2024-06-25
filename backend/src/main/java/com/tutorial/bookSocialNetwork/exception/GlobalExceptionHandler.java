@@ -2,7 +2,6 @@ package com.tutorial.bookSocialNetwork.exception;
 
 
 import jakarta.mail.MessagingException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -15,7 +14,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static com.tutorial.bookSocialNetwork.exception.BusinessErrorCodes.*;
-import static com.tutorial.bookSocialNetwork.exception.BusinessErrorCodes.BAD_CREDENTIALS;
 import static org.springframework.http.HttpStatus.*;
 
 @RestControllerAdvice

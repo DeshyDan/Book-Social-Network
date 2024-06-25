@@ -4,7 +4,6 @@ import com.tutorial.bookSocialNetwork.common.PageResponse;
 import com.tutorial.bookSocialNetwork.user.User;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springdoc.core.converters.PageableOpenAPIConverter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -12,9 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +19,7 @@ public class BookService {
 
     private final BookMapper bookMapper;
     private final BookRepository bookRepository;
-    private final PageableOpenAPIConverter pageableOpenAPIConverter;
+
 
     public Integer save(BookRequest request, Authentication connectedUser) {
         User user = (User) connectedUser.getPrincipal();
