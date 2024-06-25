@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class BorrowedBookResponse {
-     private Integer id;
+    private Integer id;
     private String title;
     private String owner;
     private String authorName;

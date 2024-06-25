@@ -19,5 +19,5 @@ public record BookRequest(
         String synopsis,
         boolean shareable
 
-        ) {
+) {
 }
