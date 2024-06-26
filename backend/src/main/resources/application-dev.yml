@@ -12,7 +12,7 @@ spring:
       hibernate:
         format_sql: true
     database: postgresql
-    database-platform:  org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   mail:
     host: localhost
@@ -31,13 +31,18 @@ spring:
         writetimeout: 5000
 
 
+
+
   application:
     security:
       jwt:
         secret-key: 45f4865d32d6839b3486f9527153faa363966a2b07177005cc1ef77e76b3cf6b1b1ea4bb1f9c2fa46de1235cf0ad3f7f61d03413f97b9c02ab4ebfcb0a6ce9c0965a686b5db21a674be6a15af82ac5fb1d52fd181b7aa4bc03074ec6606836fb1aedb181e90a24f23c843245b54747b92372b6d3b9be3bac793ea136a2192151feda3eb675adc454a5408a82552f8fd5f005a4aa23237d1461a3d7857010d5ae6404ce159b40139ba3fd4b71c42aca96503dea69f2e6cc47c9f52689a9364800293cbec70e767cf094e394b73c4db4a0569eaa6fa4d61368b9199d1df8d37daad7ecf79dd0eeca034e1010eb001cc51c96144ca14ba5ade02c0b1a6871f64c5b
         expiration: 8640000
-      mailing:
-        frontend:
-          activation-url: http://localhost:4200/activate-account
+    mailing:
+      frontend:
+        activation-url: http://localhost:4200/activate-account
+    file:
+      upload:
+        photos-output-path: ./uploads
   server:
     port: 8088
