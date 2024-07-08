@@ -6,15 +6,17 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
+import { RegistrationRequest } from '../../models/registration-request';
 
-export interface ReturnBorrowedBook$Params {
-  'book-id': number;
+export interface Register$Params {
+      body: RegistrationRequest
 }
 
-export function returnBorrowedBook(http: HttpClient, rootUrl: string, params: ReturnBorrowedBook$Params, context?: HttpContext): Observable<StrictHttpResponse<number>> {
-  const rb = new RequestBuilder(rootUrl, returnBorrowedBook.PATH, 'post');
+export function register(http: HttpClient, rootUrl: string, params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+  const rb = new RequestBuilder(rootUrl, register.PATH, 'post');
   if (params) {
-    rb.path('book-id', params['book-id'], {});
+    rb.body(params.body, 'application/json');
   }
 
   return http.request(
@@ -22,9 +24,10 @@ export function returnBorrowedBook(http: HttpClient, rootUrl: string, params: Re
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return (r as HttpResponse<any>).clone({ body: parseFloat(String((r as HttpResponse<any>).body)) }) as StrictHttpResponse<number>;
+      return r as StrictHttpResponse<{
+      }>;
     })
   );
 }
 
-returnBorrowedBook.PATH = '/Book/borrow/return/{book-id}';
+register.PATH = '/auth/register';

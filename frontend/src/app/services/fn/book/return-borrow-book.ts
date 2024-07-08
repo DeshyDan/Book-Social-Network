@@ -6,18 +6,15 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { PageResponseBookResponse } from '../../models/page-response-book-response';
 
-export interface FindAllBooks$Params {
-  page?: number;
-  size?: number;
+export interface ReturnBorrowBook$Params {
+  'book-id': number;
 }
 
-export function findAllBooks(http: HttpClient, rootUrl: string, params?: FindAllBooks$Params, context?: HttpContext): Observable<StrictHttpResponse<PageResponseBookResponse>> {
-  const rb = new RequestBuilder(rootUrl, findAllBooks.PATH, 'get');
+export function returnBorrowBook(http: HttpClient, rootUrl: string, params: ReturnBorrowBook$Params, context?: HttpContext): Observable<StrictHttpResponse<number>> {
+  const rb = new RequestBuilder(rootUrl, returnBorrowBook.PATH, 'patch');
   if (params) {
-    rb.query('page', params.page, {});
-    rb.query('size', params.size, {});
+    rb.path('book-id', params['book-id'], {});
   }
 
   return http.request(
@@ -25,9 +22,9 @@ export function findAllBooks(http: HttpClient, rootUrl: string, params?: FindAll
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<PageResponseBookResponse>;
+      return (r as HttpResponse<any>).clone({ body: parseFloat(String((r as HttpResponse<any>).body)) }) as StrictHttpResponse<number>;
     })
   );
 }
 
-findAllBooks.PATH = '/books';
+returnBorrowBook.PATH = '/books/borrow/return/{book-id}';

@@ -6,15 +6,15 @@ import { filter, map } from 'rxjs/operators';
 import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
-import { PageResponseBookResponse } from '../../models/page-response-book-response';
+import { PageResponseBorrowedBookResponse } from '../../models/page-response-borrowed-book-response';
 
-export interface FindAllBooksByOwner$Params {
+export interface FindAllReturnedBooks$Params {
   page?: number;
   size?: number;
 }
 
-export function findAllBooksByOwner(http: HttpClient, rootUrl: string, params?: FindAllBooksByOwner$Params, context?: HttpContext): Observable<StrictHttpResponse<PageResponseBookResponse>> {
-  const rb = new RequestBuilder(rootUrl, findAllBooksByOwner.PATH, 'get');
+export function findAllReturnedBooks(http: HttpClient, rootUrl: string, params?: FindAllReturnedBooks$Params, context?: HttpContext): Observable<StrictHttpResponse<PageResponseBorrowedBookResponse>> {
+  const rb = new RequestBuilder(rootUrl, findAllReturnedBooks.PATH, 'get');
   if (params) {
     rb.query('page', params.page, {});
     rb.query('size', params.size, {});
@@ -25,9 +25,9 @@ export function findAllBooksByOwner(http: HttpClient, rootUrl: string, params?: 
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<PageResponseBookResponse>;
+      return r as StrictHttpResponse<PageResponseBorrowedBookResponse>;
     })
   );
 }
 
-findAllBooksByOwner.PATH = '/books/owner';
+findAllReturnedBooks.PATH = '/books/returned';

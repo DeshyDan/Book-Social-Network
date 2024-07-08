@@ -27,4 +27,4 @@ export function updateArchivedStatus(http: HttpClient, rootUrl: string, params: 
   );
 }
 
-updateArchivedStatus.PATH = '/Book/archived/{book-id}';
+updateArchivedStatus.PATH = '/books/archived/{book-id}';
