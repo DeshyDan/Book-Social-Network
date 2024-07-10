@@ -15,7 +15,7 @@ export class BookListComponent implements OnInit {
   size = 5;
   pages: any = [];
   message = '';
-  level: 'success' |'error' = 'success';
+  level: 'success' | 'error' = 'success';
 
   constructor(
     private bookService: BookService,
@@ -53,7 +53,7 @@ export class BookListComponent implements OnInit {
   }
 
   goToPreviousPage() {
-    this.page --;
+    this.page--;
     this.findAllBooks();
   }
 
