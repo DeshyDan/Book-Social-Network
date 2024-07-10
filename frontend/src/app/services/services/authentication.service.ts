@@ -1,23 +1,20 @@
 /* tslint:disable */
 /* eslint-disable */
-import { HttpClient, HttpContext } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {HttpClient, HttpContext} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { StrictHttpResponse } from '../strict-http-response';
+import {BaseService} from '../base-service';
+import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 
-import { authenticate } from '../fn/authentication/authenticate';
-import { Authenticate$Params } from '../fn/authentication/authenticate';
-import { AuthenticationResponse } from '../models/authentication-response';
-import { confirm } from '../fn/authentication/confirm';
-import { Confirm$Params } from '../fn/authentication/confirm';
-import { register } from '../fn/authentication/register';
-import { Register$Params } from '../fn/authentication/register';
+import {authenticate, Authenticate$Params} from '../fn/authentication/authenticate';
+import {AuthenticationResponse} from '../models/authentication-response';
+import {confirm, Confirm$Params} from '../fn/authentication/confirm';
+import {register, Register$Params} from '../fn/authentication/register';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AuthenticationService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
@@ -32,8 +29,7 @@ export class AuthenticationService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  register$Response(params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-}>> {
+  register$Response(params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<{}>> {
     return register(this.http, this.rootUrl, params, context);
   }
 
@@ -43,12 +39,9 @@ export class AuthenticationService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  register(params: Register$Params, context?: HttpContext): Observable<{
-}> {
+  register(params: Register$Params, context?: HttpContext): Observable<{}> {
     return this.register$Response(params, context).pipe(
-      map((r: StrictHttpResponse<{
-}>): {
-} => r.body)
+      map((r: StrictHttpResponse<{}>): {} => r.body)
     );
   }
 

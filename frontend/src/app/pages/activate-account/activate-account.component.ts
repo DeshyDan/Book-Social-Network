@@ -13,10 +13,12 @@ export class ActivateAccountComponent {
   message = '';
   isOkay = true;
   submitted = false;
+
   constructor(
     private router: Router,
     private authService: AuthenticationService
-  ) {}
+  ) {
+  }
 
   private confirmAccount(token: string) {
     this.authService.confirm({

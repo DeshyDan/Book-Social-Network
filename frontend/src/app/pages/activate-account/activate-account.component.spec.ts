@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ActivateAccountComponent } from './activate-account.component';
+import {ActivateAccountComponent} from './activate-account.component';
 
 describe('ActivateAccountComponent', () => {
   let component: ActivateAccountComponent;

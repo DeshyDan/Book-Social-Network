@@ -1,21 +1,19 @@
 /* tslint:disable */
 /* eslint-disable */
-import { HttpClient, HttpContext } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {HttpClient, HttpContext} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { StrictHttpResponse } from '../strict-http-response';
+import {BaseService} from '../base-service';
+import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 
-import { findAllFeedbacksByBook } from '../fn/feedback/find-all-feedbacks-by-book';
-import { FindAllFeedbacksByBook$Params } from '../fn/feedback/find-all-feedbacks-by-book';
-import { PageResponseFeedbackResponse } from '../models/page-response-feedback-response';
-import { saveFeedback } from '../fn/feedback/save-feedback';
-import { SaveFeedback$Params } from '../fn/feedback/save-feedback';
+import {findAllFeedbacksByBook, FindAllFeedbacksByBook$Params} from '../fn/feedback/find-all-feedbacks-by-book';
+import {PageResponseFeedbackResponse} from '../models/page-response-feedback-response';
+import {saveFeedback, SaveFeedback$Params} from '../fn/feedback/save-feedback';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class FeedbackService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);

@@ -1,12 +1,12 @@
 /* tslint:disable */
 /* eslint-disable */
-import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
+import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {ApiConfiguration, ApiConfigurationParams} from './api-configuration';
 
-import { FeedbackService } from './services/feedback.service';
-import { BookService } from './services/book.service';
-import { AuthenticationService } from './services/authentication.service';
+import {FeedbackService} from './services/feedback.service';
+import {BookService} from './services/book.service';
+import {AuthenticationService} from './services/authentication.service';
 
 /**
  * Module that provides all services and configuration.
@@ -35,7 +35,7 @@ export class ApiModule {
     }
   }
 
-  constructor( 
+  constructor(
     @Optional() @SkipSelf() parentModule: ApiModule,
     @Optional() http: HttpClient
   ) {
@@ -44,7 +44,7 @@ export class ApiModule {
     }
     if (!http) {
       throw new Error('You need to import the HttpClientModule in your AppModule! \n' +
-      'See also https://github.com/angular/angular/issues/20575');
+        'See also https://github.com/angular/angular/issues/20575');
     }
   }
 }

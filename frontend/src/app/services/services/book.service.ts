@@ -1,43 +1,31 @@
 /* tslint:disable */
 /* eslint-disable */
-import { HttpClient, HttpContext } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {HttpClient, HttpContext} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { StrictHttpResponse } from '../strict-http-response';
+import {BaseService} from '../base-service';
+import {ApiConfiguration} from '../api-configuration';
+import {StrictHttpResponse} from '../strict-http-response';
 
-import { approveReturnBorrowBook } from '../fn/book/approve-return-borrow-book';
-import { ApproveReturnBorrowBook$Params } from '../fn/book/approve-return-borrow-book';
-import { BookResponse } from '../models/book-response';
-import { borrowBook } from '../fn/book/borrow-book';
-import { BorrowBook$Params } from '../fn/book/borrow-book';
-import { findAllBooks } from '../fn/book/find-all-books';
-import { FindAllBooks$Params } from '../fn/book/find-all-books';
-import { findAllBooksByOwner } from '../fn/book/find-all-books-by-owner';
-import { FindAllBooksByOwner$Params } from '../fn/book/find-all-books-by-owner';
-import { findAllBorrowedBooks } from '../fn/book/find-all-borrowed-books';
-import { FindAllBorrowedBooks$Params } from '../fn/book/find-all-borrowed-books';
-import { findAllReturnedBooks } from '../fn/book/find-all-returned-books';
-import { FindAllReturnedBooks$Params } from '../fn/book/find-all-returned-books';
-import { findBookById } from '../fn/book/find-book-by-id';
-import { FindBookById$Params } from '../fn/book/find-book-by-id';
-import { PageResponseBookResponse } from '../models/page-response-book-response';
-import { PageResponseBorrowedBookResponse } from '../models/page-response-borrowed-book-response';
-import { returnBorrowBook } from '../fn/book/return-borrow-book';
-import { ReturnBorrowBook$Params } from '../fn/book/return-borrow-book';
-import { saveBook } from '../fn/book/save-book';
-import { SaveBook$Params } from '../fn/book/save-book';
-import { updateArchivedStatus } from '../fn/book/update-archived-status';
-import { UpdateArchivedStatus$Params } from '../fn/book/update-archived-status';
-import { updateShareableStatus } from '../fn/book/update-shareable-status';
-import { UpdateShareableStatus$Params } from '../fn/book/update-shareable-status';
-import { uploadBookCoverPicture } from '../fn/book/upload-book-cover-picture';
-import { UploadBookCoverPicture$Params } from '../fn/book/upload-book-cover-picture';
+import {approveReturnBorrowBook, ApproveReturnBorrowBook$Params} from '../fn/book/approve-return-borrow-book';
+import {BookResponse} from '../models/book-response';
+import {borrowBook, BorrowBook$Params} from '../fn/book/borrow-book';
+import {findAllBooks, FindAllBooks$Params} from '../fn/book/find-all-books';
+import {findAllBooksByOwner, FindAllBooksByOwner$Params} from '../fn/book/find-all-books-by-owner';
+import {findAllBorrowedBooks, FindAllBorrowedBooks$Params} from '../fn/book/find-all-borrowed-books';
+import {findAllReturnedBooks, FindAllReturnedBooks$Params} from '../fn/book/find-all-returned-books';
+import {findBookById, FindBookById$Params} from '../fn/book/find-book-by-id';
+import {PageResponseBookResponse} from '../models/page-response-book-response';
+import {PageResponseBorrowedBookResponse} from '../models/page-response-borrowed-book-response';
+import {returnBorrowBook, ReturnBorrowBook$Params} from '../fn/book/return-borrow-book';
+import {saveBook, SaveBook$Params} from '../fn/book/save-book';
+import {updateArchivedStatus, UpdateArchivedStatus$Params} from '../fn/book/update-archived-status';
+import {updateShareableStatus, UpdateShareableStatus$Params} from '../fn/book/update-shareable-status';
+import {uploadBookCoverPicture, UploadBookCoverPicture$Params} from '../fn/book/upload-book-cover-picture';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class BookService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
@@ -102,8 +90,7 @@ export class BookService extends BaseService {
    *
    * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
    */
-  uploadBookCoverPicture$Response(params: UploadBookCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-}>> {
+  uploadBookCoverPicture$Response(params: UploadBookCoverPicture$Params, context?: HttpContext): Observable<StrictHttpResponse<{}>> {
     return uploadBookCoverPicture(this.http, this.rootUrl, params, context);
   }
 
@@ -113,12 +100,9 @@ export class BookService extends BaseService {
    *
    * This method sends `multipart/form-data` and handles request body of type `multipart/form-data`.
    */
-  uploadBookCoverPicture(params: UploadBookCoverPicture$Params, context?: HttpContext): Observable<{
-}> {
+  uploadBookCoverPicture(params: UploadBookCoverPicture$Params, context?: HttpContext): Observable<{}> {
     return this.uploadBookCoverPicture$Response(params, context).pipe(
-      map((r: StrictHttpResponse<{
-}>): {
-} => r.body)
+      map((r: StrictHttpResponse<{}>): {} => r.body)
     );
   }
 
