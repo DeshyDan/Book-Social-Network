@@ -33,6 +33,17 @@ services:
     depends_on:
       - postgres
 
+  bsn-ui:
+    container_name: bsn-ui
+    image: bsn/bsn-ui:1.0.0
+    ports:
+      - 8080:80
+    networks:
+      - spring-demo
+    depends_on:
+      - bsn-api
+
+
 networks:
   spring-demo:
     driver: bridge
