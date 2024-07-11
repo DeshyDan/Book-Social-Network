@@ -10,9 +10,9 @@
     </parent>
     <groupId>com.deshydan</groupId>
     <artifactId>book-social-network</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>backend</name>
-    <description>backend</description>
+    <version>1.0.0</version>
+    <name>book network api</name>
+    <description>Spring Boot Project for book social network</description>
     <url/>
     <licenses>
         <license/>
