@@ -9,20 +9,17 @@ services:
       POSTGRES_DB: book_social_network
     volumes:
       - postgres:/data/postgres
-
     ports:
       - 5432:5432
     networks:
       - spring-demo
     restart: unless-stopped
-
   mail-dev:
     container_name: mail-dev-bsn
     image: maildev/maildev
     ports:
       - 1080:1080
       - 1025:1025
-
   bsn-api:
     container_name: bsn-api
     image: bsn/bsn:1.0.0
@@ -42,8 +39,6 @@ services:
       - spring-demo
     depends_on:
       - bsn-api
-
-
 networks:
   spring-demo:
     driver: bridge
