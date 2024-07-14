@@ -24,5 +24,8 @@ ENV MAILDEV_URL=localhost
 
 ENV ACTIVE_PROFILE=${PROFILE}
 ENV JAR_VERSION=${APP_VERSION}
+ENV EMAIL_HOSTNAME=
+ENV EMAIL_USERNAME=
+ENV EMAIL_PASSSWORD=
 
 CMD java -jar -Dspring.profiles.active=${ACTIVE_PROFILE} -Dspring.datasource.url=${DB_URL}  book-social-network-${JAR_VERSION}.jar
