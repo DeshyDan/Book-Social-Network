@@ -28,7 +28,7 @@ jobs:
 
       - name: Compile project
         run: |
-          cd book-network
+          cd backend
           ./mvnw clean package
 
   unit-tests:
@@ -48,7 +48,7 @@ jobs:
 
       - name: Compile project
         run: |
-          cd book-network
+          cd backend
           ./mvnw clean test
 
   build:
@@ -69,7 +69,7 @@ jobs:
 
       - name: Compile project
         run: |
-          cd book-network
+          cd backend
           ./mvnw clean package
 
   build-image:
@@ -87,6 +87,11 @@ jobs:
         with:
           java-version: 17
           distribution: 'corretto'
+
+      - name: Compile project
+        run: |
+          cd book-network
+          ./mvnw clean package
 
       - name: Extract project version
         id: extract_version
@@ -111,3 +116,25 @@ jobs:
           build-args: |
             PROFILE=dev
             APP_VERSION=${{steps.extract_version.outputs.VERSION}}
+
+  deploy:
+    name: Deploy Backend
+    runs-on: ubuntu-latest
+    needs: [ build-image ]
+    steps:
+      - name: Create Deployment Folder
+        run: ssh ${{secrets_VPS_USERNAME}}@${{secrets_VPS_IP}} "mkdir -p ci-cd"
+
+      - name: Copy docker-compose file
+        run: scp -oStrictHostKeyChecking=no docker-compose.yml ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }}:ci-cd/docker-compose.yml
+
+      - name: Set ENV variable and deploy
+        run: |
+          ssh ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} <<EOF
+          export EMAIL_HOST_NAME=${{ secrets.EMAIL_HOST_NAME }}
+          export EMAIL_USER_NAME=${{ secrets.EMAIL_USER_NAME }}
+          export EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}
+          cd ci-cd
+          docker compose -f docker-compose.yml pull -q
+          docker compose -f docker-compose.yml up -d
+          EOF
