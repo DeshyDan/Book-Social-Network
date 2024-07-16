@@ -22,7 +22,7 @@ public class FeedbackController {
             @Valid @RequestBody FeedbackRequest request,
             Authentication connectedUser
     ) {
-        return ResponseEntity.ok(feedBackService.saveFeedback(request, connectedUser));
+        return ResponseEntity.ok(feedBackService.save(request, connectedUser));
     }
 
 

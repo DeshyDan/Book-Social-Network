@@ -3,8 +3,9 @@ package com.tutorial.bookSocialNetwork.book;
 import com.tutorial.bookSocialNetwork.common.BaseEntity;
 import com.tutorial.bookSocialNetwork.feedback.Feedback;
 import com.tutorial.bookSocialNetwork.history.BookTransactionHistory;
-import com.tutorial.bookSocialNetwork.user.User;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,9 +31,9 @@ public class Book extends BaseEntity {
     private boolean archived;
     private boolean shareable;
 
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private User owner;
+    //    @ManyToOne
+    //    @JoinColumn(name = "owner_id")
+    //    private User owner;
 
     @OneToMany(mappedBy = "book")
     private List<Feedback> feedbacks;
