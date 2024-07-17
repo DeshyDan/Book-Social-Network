@@ -29,7 +29,7 @@ public class BookMapper {
                 .rate(book.getRate())
                 .shareable(book.isShareable())
                 .archived(book.isShareable())
-                .owner(book.getOwner().getFullName())
+                .owner(book.getCreatedBy())
                 .cover(FileUtils.readFileFromLocation(book.getBookCover()))
                 .build();
     }
