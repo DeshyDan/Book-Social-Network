@@ -22,6 +22,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
+
     @Id
     @GeneratedValue
     private Integer id;
@@ -29,12 +30,15 @@ public class BaseEntity {
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;
+
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
+
     @CreatedBy
     @Column(nullable = false, updatable = false)
     private String createdBy;
+
     @LastModifiedBy
     @Column(insertable = false)
     private String lastModifiedBy;

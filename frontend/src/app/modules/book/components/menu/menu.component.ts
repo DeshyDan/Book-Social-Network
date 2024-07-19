@@ -8,8 +8,9 @@ import {KeycloakService} from "../../../../services/keycloak/keycloak.service";
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private keycloakService:KeycloakService) {
+  constructor(private keycloakService: KeycloakService) {
   }
+
   ngOnInit(): void {
     const linkColor = document.querySelectorAll('.nav-link');
     linkColor.forEach(link => {

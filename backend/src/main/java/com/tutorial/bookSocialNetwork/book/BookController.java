@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("Book")
+@RequestMapping("books")
 @RequiredArgsConstructor
 @Tag(name = "Book")
 public class BookController {
@@ -26,8 +26,8 @@ public class BookController {
         return ResponseEntity.ok(bookservice.save(request, connectedUser));
     }
 
-    @GetMapping("{book-id}")
-    public ResponseEntity<BookResponse> findById(
+    @GetMapping("/{book-id}")
+    public ResponseEntity<BookResponse> findBookById(
             @PathVariable("book-id") Integer bookId
     ) {
         return ResponseEntity.ok(bookservice.findById(bookId));
@@ -51,21 +51,30 @@ public class BookController {
         return ResponseEntity.ok(bookservice.findAllBooksByOwner(page, size, connectedUser));
     }
 
-    @GetMapping("/returned")
+    @GetMapping("/borrowed")
     public ResponseEntity<PageResponse<BorrowedBookResponse>> findAllBorrowedBooks(
             @RequestParam(name = "page", defaultValue = "0", required = false) int page,
             @RequestParam(name = "size", defaultValue = "10", required = false) int size,
             Authentication connectedUser
     ) {
-        return ResponseEntity.ok(bookservice.findAllReturnBooks(page, size, connectedUser));
+        return ResponseEntity.ok(bookservice.findAllBorrowedBooks(page, size, connectedUser));
+    }
+
+    @GetMapping("/returned")
+    public ResponseEntity<PageResponse<BorrowedBookResponse>> findAllReturnedBooks(
+            @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+            @RequestParam(name = "size", defaultValue = "10", required = false) int size,
+            Authentication connectedUser
+    ) {
+        return ResponseEntity.ok(bookservice.findAllReturnedBooks(page, size, connectedUser));
     }
 
     @PatchMapping("/shareable/{book-id}")
     public ResponseEntity<Integer> updateShareableStatus(
             @PathVariable("book-id") Integer bookId,
-            Authentication authentication
+            Authentication connectedUser
     ) {
-        return ResponseEntity.ok(bookservice.updateShareableStatus(bookId, authentication));
+        return ResponseEntity.ok(bookservice.updateShareableStatus(bookId, connectedUser));
     }
 
     @PatchMapping("/archived/{book-id}")
@@ -104,12 +113,12 @@ public class BookController {
     @PostMapping(value = "/cover/{book-id}", consumes = "multipart/form-data")
     public ResponseEntity<?> uploadBookCoverPicture(
             @PathVariable("book-id") Integer bookId,
-            @Parameter
+            @Parameter()
             @RequestPart("file") MultipartFile file,
-            Authentication connectedUser) {
+            Authentication connectedUser
+    ) {
         bookservice.uploadBookCoverPicture(bookId, file, connectedUser);
         return ResponseEntity.accepted().build();
     }
-
 
 }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {KeycloakService} from "../keycloak/keycloak.service";
+import {KeycloakService} from '../keycloak/keycloak.service';
 
 @Injectable()
 export class HttpTokenInterceptor implements HttpInterceptor {

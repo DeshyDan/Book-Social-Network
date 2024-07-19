@@ -2,7 +2,9 @@
 
 ## Overview
 
-The backend of the Book Social Network project is responsible for handling all server-side operations, including user authentication, book management, and API endpoints. This section provides an overview of the backend architecture, technologies used, and setup instructions.
+The backend of the Book Social Network project is responsible for handling all server-side operations, including user
+authentication, book management, and API endpoints. This section provides an overview of the backend architecture,
+technologies used, and setup instructions.
 
 ## Technologies Used
 
