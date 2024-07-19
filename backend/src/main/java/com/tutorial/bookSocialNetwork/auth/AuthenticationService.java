@@ -1,31 +1,12 @@
 package com.tutorial.bookSocialNetwork.auth;
 
-import com.tutorial.bookSocialNetwork.email.EmailService;
-import com.tutorial.bookSocialNetwork.email.EmailTemplateName;
-import com.tutorial.bookSocialNetwork.role.RoleRepository;
-import com.tutorial.bookSocialNetwork.security.JwtService;
-import com.tutorial.bookSocialNetwork.user.Token;
-import com.tutorial.bookSocialNetwork.user.TokenRepository;
-import com.tutorial.bookSocialNetwork.user.User;
-import com.tutorial.bookSocialNetwork.user.UserRepository;
-import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.security.SecureRandom;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-    private final RoleRepository roleRepository;
+   /* private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
@@ -129,6 +110,6 @@ public class AuthenticationService {
         savedToken.setValidateAt(LocalDateTime.now());
         tokenRepository.save(savedToken);
 
-    }
+    }*/
 }
 

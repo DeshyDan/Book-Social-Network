@@ -1,28 +1,11 @@
 package com.tutorial.bookSocialNetwork.security;
 
-import com.tutorial.bookSocialNetwork.user.TokenRepository;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.lang.NonNull;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.stereotype.Service;
-import org.springframework.web.filter.OncePerRequestFilter;
 
-import java.io.IOException;
-
-import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-
-@Service
+//@Service
 @RequiredArgsConstructor
-public class JwtFilter extends OncePerRequestFilter {
-    private final JwtService jwtService;
+public class JwtFilter {
+    /*private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
     private final TokenRepository tokenRepository;
 
@@ -66,5 +49,5 @@ public class JwtFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request, response);
 
-    }
+    }*/
 }
