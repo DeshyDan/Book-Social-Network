@@ -17,7 +17,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collections;
 
 import static org.springframework.http.HttpHeaders.*;
 
@@ -27,10 +27,10 @@ import static org.springframework.http.HttpHeaders.*;
 public class BeansConfig {
 
 //    private final UserDetailsService userDetailsService;
-    @Value("${spring.application.cors.origins:*}")
-    private List<String> allowedOrigins;
-
-//    @Bean
+//    @Value("${spring.application.cors.origins:*}")
+//    private List<String> allowedOrigins;
+//
+////    @Bean
 //    public AuthenticationProvider authenticationProvider() {
 //        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 //        authProvider.setUserDetailsService(userDetailsService);
@@ -58,7 +58,7 @@ public class BeansConfig {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(allowedOrigins);
+        config.setAllowedOrigins(Collections.singletonList("https://locahost:4200"));
         config.setAllowedHeaders(Arrays.asList(
                 ORIGIN,
                 CONTENT_TYPE,
